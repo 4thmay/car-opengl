@@ -1,0 +1,21 @@
+LƯU Ý
+Trên macOS, GLUT được tích hợp sẵn framework trên hệ thống, include bằng #include <GLUT/glut.h>. Trên Windows/Linux, cần cài đặt freegut và include bằng #include <GL/glut.h>.
+
+******** KHI MUỐN XE TỰ CHẠY ********
+HÃY COPY TỪNG DÒNG NÀY DÁN VÀO ĐOẠN CODE CHÍNH
+
+COPY DÁN VÀO DÒNG 6
+float speed = 3.0f;
+
+COPY THAY THẾ TOÀN BỘ CODE Ở DÒNG 551 - 563 BẰNG ĐOẠN CODE NÀY
+void update(int value)
+{
+       tx += speed;          
+       if (tx > 500)
+           tx = -900;        
+       glutPostRedisplay();
+       glutTimerFunc(16, update, 0);
+}
+
+TRONG HÀM main() ở dòng 575 
+thay glutSpecialFunc(specialKeys); bằng glutTimerFunc(16, update, 0);
